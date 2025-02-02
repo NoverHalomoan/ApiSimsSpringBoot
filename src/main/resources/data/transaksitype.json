@@ -1,0 +1,15 @@
+{
+    "TipeTransaction": [{
+            "idoftypetrans": "1111",
+            "nameoftypetrans": "Pulsa"
+        },
+        {
+            "idoftypetrans": "1112",
+            "nameoftypetrans": "VoucerGame"
+        },
+        {
+            "idoftypetrans": "1113",
+            "nameoftypetrans": "Saldo"
+        }
+    ]
+}
