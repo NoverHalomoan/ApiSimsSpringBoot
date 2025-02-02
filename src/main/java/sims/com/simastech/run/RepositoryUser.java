@@ -131,9 +131,9 @@ public class RepositoryUser {
         if (logins.getLogintime().plusMinutes(10).isAfter(logins.getLogintime())) {
             Map<String, String> datas = new HashMap<>();
             datas.put("email", datacari.get().getEmail());
-            datas.put("first_name", datacari.get().getFirst_name());
-            datas.put("last_name", datacari.get().getLast_name());
-            datas.put("profile_image", datacari.get().getProfile_image());
+            // datas.put("first_name", datacari.get().getFirst_name());
+            // datas.put("last_name", datacari.get().getLast_name());
+            // datas.put("profile_image", datacari.get().getProfile_image());
 
             response.setStatus(0);
             response.setMessage("Sukses");
