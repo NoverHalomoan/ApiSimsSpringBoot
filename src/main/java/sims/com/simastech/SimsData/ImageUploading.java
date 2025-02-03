@@ -8,7 +8,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 
-@Schema(hidden = true)
 @Entity
 @Table(name = "ImageProfile")
 public class ImageUploading {
@@ -21,13 +20,6 @@ public class ImageUploading {
     @Lob
     @Column(columnDefinition = "BYTEA") // Untuk PostgreSQL
     private byte[] fileData;
-
-    public ImageUploading(String id, String filename, String filetype, byte[] fileData) {
-        this.id = id;
-        this.filename = filename;
-        this.filetype = filetype;
-        this.fileData = fileData;
-    }
 
     public String getId() {
         return id;
@@ -55,6 +47,13 @@ public class ImageUploading {
 
     public byte[] getFileData() {
         return fileData;
+    }
+
+    public ImageUploading(String id, String filename, String filetype, byte[] fileData) {
+        this.id = id;
+        this.filename = filename;
+        this.filetype = filetype;
+        this.fileData = fileData;
     }
 
     public void setFileData(byte[] fileData) {
