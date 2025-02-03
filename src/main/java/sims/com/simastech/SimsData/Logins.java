@@ -1,6 +1,5 @@
 package sims.com.simastech.SimsData;
 
-import java.sql.Time;
 import java.time.LocalTime;
 
 import org.springframework.stereotype.Component;
@@ -15,9 +14,19 @@ public class Logins {
     private String token;
     @JsonIgnore
     private LocalTime logintime;
+    @JsonIgnore
+    private String idlogins;
 
     public String getToken() {
         return token;
+    }
+
+    public String getIdlogins() {
+        return idlogins;
+    }
+
+    public void setIdlogins(String idlogins) {
+        this.idlogins = idlogins;
     }
 
     public void setToken(String token) {
