@@ -7,10 +7,12 @@ import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import sims.com.simastech.SimsData.BannerInformation;
 import sims.com.simastech.SimsData.InformationService;
 
 @Repository
+@Schema(hidden = true)
 public class RepositoryInformation {
 
     private final JdbcClient jdbcClient;

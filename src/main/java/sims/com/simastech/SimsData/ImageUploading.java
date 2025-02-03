@@ -1,11 +1,14 @@
 package sims.com.simastech.SimsData;
 
+import io.swagger.v3.oas.annotations.Hidden;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 
+@Schema(hidden = true)
 @Entity
 @Table(name = "ImageProfile")
 public class ImageUploading {

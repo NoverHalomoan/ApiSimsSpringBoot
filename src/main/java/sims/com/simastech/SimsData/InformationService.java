@@ -1,9 +1,11 @@
 package sims.com.simastech.SimsData;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,8 +18,20 @@ public class InformationService {
     private String service_name;
     @JsonProperty
     private String service_icon;
+
+    public BannerInformation getBannerInformation() {
+        return bannerInformation;
+    }
+
+    public void setBannerInformation(BannerInformation bannerInformation) {
+        this.bannerInformation = bannerInformation;
+    }
+
     @JsonProperty
     private Double service_tariff;
+    @JsonIgnore
+    @OneToOne
+    private BannerInformation bannerInformation;
 
     public String getService_code() {
         return service_code;

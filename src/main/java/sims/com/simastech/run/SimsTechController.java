@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Map;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
@@ -18,6 +19,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import io.swagger.v3.oas.annotations.Hidden;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
 import jakarta.servlet.http.HttpServletRequest;
 import sims.com.simastech.SimsData.BannerInformation;
 import sims.com.simastech.SimsData.ImageUploading;
@@ -43,22 +50,20 @@ class SimsTechController {
         this.repositoryTransaksi = repositoryTransaksi;
     }
 
-    @GetMapping("")
-    public String home(Model model) {
-        model.addAttribute("message", "Hello, Spring Boot MVC!");
-        return "index";
-    }
-
     // proses registrasi
+    @Tag(name = "Modul Membership")
     @PostMapping("/registration")
-    public ResponseEntity<ApiResponse<Object>> CreateRegist(@RequestBody Users users) {
+    public @Schema(hidden = true) ResponseEntity<ApiResponse<Object>> CreateRegist(
+            @RequestBody @Schema(hidden = true) Users users) {
         ApiResponse<Object> response = repositoryUser.CreateRegist(users);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
     // proses login
+    @Tag(name = "Modul Membership")
     @PostMapping("/login")
-    public ResponseEntity<ApiResponse<Object>> postLogin(@RequestBody Logins login) {
+    public @Schema(hidden = true) ResponseEntity<ApiResponse<Object>> postLogin(
+            @RequestBody @Schema(hidden = true) Logins login) {
 
         ApiResponse<Object> response = repositoryUser.loginapp(login);
         if (response.getToken() != "" || response.getToken() != "") {
@@ -73,8 +78,9 @@ class SimsTechController {
     }
 
     // proses profile
+    @Tag(name = "Modul Membership")
     @GetMapping("/profile")
-    public ResponseEntity<ApiResponse<Object>> GetLogins() {
+    public @Schema(hidden = true) ResponseEntity<ApiResponse<Object>> GetLogins() {
         ApiResponse<Object> response = repositoryUser.getprofile(logins);
         if (response.getStatus() == 108) {
             logins = new Logins();
@@ -83,8 +89,10 @@ class SimsTechController {
     }
 
     // proses update profile
+    @Tag(name = "Modul Membership")
     @PutMapping("/profile/update")
-    public ResponseEntity<ApiResponse<Object>> UpdateProfile(@RequestBody Users users) {
+    public @Schema(hidden = true) ResponseEntity<ApiResponse<Object>> UpdateProfile(
+            @RequestBody @Schema(hidden = true) Users users) {
         ApiResponse<Object> response = repositoryUser.updateprofile(logins, users);
         if (response.getStatus() == 108) {
             logins = new Logins();
@@ -93,9 +101,11 @@ class SimsTechController {
     }
 
     // proses update profile
+    @Tag(name = "Modul Membership")
     @PutMapping("/profile/image")
-    public ResponseEntity<ApiResponse<Object>> Updateimage(@RequestHeader Map<String, String> headers,
-            @RequestParam("File") MultipartFile files) {
+    public @Schema(hidden = true) ResponseEntity<ApiResponse<Object>> Updateimage(
+            @RequestHeader Map<String, String> headers,
+            @RequestParam("File") @Schema(hidden = true) MultipartFile files) {
         try {
 
             ImageUploading uploadimages = new ImageUploading(logins.getIdlogins(), files.getOriginalFilename(),
@@ -112,8 +122,9 @@ class SimsTechController {
     }
 
     // Controller for Information Banner
+    @Tag(name = "Modul Information")
     @GetMapping("/banner")
-    public ResponseEntity<ApiResponse<Object>> findallbanner(HttpServletRequest headers) {
+    public @Schema(hidden = true) ResponseEntity<ApiResponse<Object>> findallbanner(HttpServletRequest headers) {
         ApiResponse<Object> response = new ApiResponse<>(108, "Token tidak tidak valid atau kadaluwarsa", null);
         if (headers.getContentType() != "application/json") {
             return ResponseEntity.status(HttpStatus.OK).body(response);
@@ -124,8 +135,9 @@ class SimsTechController {
     }
 
     // Controller for Information Services
+    @Tag(name = "Modul Information")
     @GetMapping("/services")
-    public ResponseEntity<ApiResponse<Object>> findallservices(HttpServletRequest headers) {
+    public @Schema(hidden = true) ResponseEntity<ApiResponse<Object>> findallservices(HttpServletRequest headers) {
         ApiResponse<Object> response = new ApiResponse<>(108, "Token tidak tidak valid atau kadaluwarsa", null);
         if (headers.getContentType() != "application/json") {
             return ResponseEntity.status(HttpStatus.OK).body(response);
@@ -136,8 +148,9 @@ class SimsTechController {
     }
 
     // Controller balance
+    @Tag(name = "Modul Transaction")
     @GetMapping("/balance")
-    public ResponseEntity<ApiResponse<Object>> GetBalance(HttpServletRequest headers) {
+    public @Schema(hidden = true) ResponseEntity<ApiResponse<Object>> GetBalance(HttpServletRequest headers) {
         ApiResponse<Object> response = new ApiResponse<>(108, "Token tidak tidak valid atau kadaluwarsa", null);
 
         if (headers.getHeader("accept").compareTo("application/json") != 0) {
@@ -149,9 +162,10 @@ class SimsTechController {
     }
 
     // Controller balance
+    @Tag(name = "Modul Transaction")
     @PostMapping("/topup")
-    public ResponseEntity<ApiResponse<Object>> topup(HttpServletRequest headers,
-            @RequestBody rectransaksi rectransaksii) {
+    public @Schema(hidden = true) ResponseEntity<ApiResponse<Object>> topup(HttpServletRequest headers,
+            @RequestBody @Schema(hidden = true) rectransaksi rectransaksii) {
         ApiResponse<Object> response = new ApiResponse<>(108, "Token tidak tidak valid atau kadaluwarsa", null);
 
         response = repositoryTransaksi.InsertDataTopup(logins.getToken(),
@@ -160,8 +174,10 @@ class SimsTechController {
     }
 
     // Controller transaction
+    @Tag(name = "Modul Transaction")
     @PostMapping("/transaction")
-    public ResponseEntity<ApiResponse<Object>> transcation(@RequestBody rectransaksi rectransaksii) {
+    public @Schema(hidden = true) ResponseEntity<ApiResponse<Object>> transcation(
+            @RequestBody @Schema(hidden = true) rectransaksi rectransaksii) {
         ApiResponse<Object> response = new ApiResponse<>(108, "Token tidak tidak valid atau kadaluwarsa", null);
 
         response = repositoryTransaksi.Transaksi(rectransaksii, logins);
@@ -169,8 +185,9 @@ class SimsTechController {
     }
 
     // Controller all transaction
+    @Tag(name = "Modul Transaction")
     @GetMapping("/transaction/history")
-    public ResponseEntity<ApiResponse<Object>> alltranscation(@RequestParam Integer offset,
+    public @Schema(hidden = true) ResponseEntity<ApiResponse<Object>> alltranscation(@RequestParam Integer offset,
             @RequestParam Integer limit) {
         ApiResponse<Object> response = new ApiResponse<>(108, "Token tidak tidak valid atau kadaluwarsa", null);
         response = repositoryTransaksi.allTransaksi(offset, limit, logins);

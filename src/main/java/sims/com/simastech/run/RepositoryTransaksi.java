@@ -13,6 +13,7 @@ import java.util.Optional;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import sims.com.simastech.SimsData.InformationService;
 import sims.com.simastech.SimsData.Logins;
 import sims.com.simastech.SimsData.Transactions;
@@ -20,6 +21,7 @@ import sims.com.simastech.SimsData.Users;
 import sims.com.simastech.SimsData.rectransaksi;
 
 @Repository
+@Schema(hidden = true)
 public class RepositoryTransaksi {
     private final JdbcClient jdbcClient;
     Map<String, Object> datas = new HashMap<>();

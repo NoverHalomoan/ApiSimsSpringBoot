@@ -2,6 +2,9 @@ package sims.com.simastech.run;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@Schema(hidden = true)
 public class ApiResponse<T> {
     private int status;
     private String message;

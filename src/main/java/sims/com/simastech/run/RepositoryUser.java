@@ -11,11 +11,13 @@ import java.util.Optional;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import sims.com.simastech.SimsData.ImageUploading;
 import sims.com.simastech.SimsData.Logins;
 import sims.com.simastech.SimsData.Users;
 
 @Repository
+@Schema(hidden = true)
 public class RepositoryUser {
 
     private final JdbcClient jdbcClient;

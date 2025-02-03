@@ -57,6 +57,17 @@ public class Transactions {
     @ManyToOne // Setiap transaksi terkait dengan satu User
     private Users user;
 
+    public InformationService getInformationService() {
+        return informationService;
+    }
+
+    public void setInformationService(InformationService informationService) {
+        this.informationService = informationService;
+    }
+
+    @OneToOne
+    private InformationService informationService;
+
     public String getIdtransaksi() {
         return idtransaksi;
     }

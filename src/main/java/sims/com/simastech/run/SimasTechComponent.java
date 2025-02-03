@@ -16,12 +16,14 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import aj.org.objectweb.asm.TypeReference;
+import io.swagger.v3.oas.annotations.media.Schema;
 import sims.com.simastech.SimsData.BannerInformation;
 import sims.com.simastech.SimsData.BannerInformationList;
 import sims.com.simastech.SimsData.InformationService;
 import sims.com.simastech.SimsData.InformationServiceList;
 
 @Component
+@Schema(hidden = true)
 public class SimasTechComponent implements CommandLineRunner {
 
     // fungsi untuk mencatat log disistem

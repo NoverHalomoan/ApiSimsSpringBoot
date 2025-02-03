@@ -33,6 +33,9 @@ public class Users {
     @Column(columnDefinition = "TEXT")
     private String token;
 
+    @OneToOne
+    private ImageUploading imageUploading;
+
     public String getProfile_image() {
         return profile_image;
     }
@@ -106,6 +109,14 @@ public class Users {
 
     public void setTransactions(List<Transactions> transactions) {
         this.transactions = transactions;
+    }
+
+    public ImageUploading getImageUploading() {
+        return imageUploading;
+    }
+
+    public void setImageUploading(ImageUploading imageUploading) {
+        this.imageUploading = imageUploading;
     }
 
 }
