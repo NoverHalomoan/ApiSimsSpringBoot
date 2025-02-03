@@ -7,6 +7,8 @@ public class ApiResponse<T> {
     private String message;
     @JsonIgnore
     private String token;
+    @JsonIgnore
+    private String loginid;
 
     public String getToken() {
         return token;
@@ -46,6 +48,14 @@ public class ApiResponse<T> {
 
     public void setData(T data) {
         this.data = data;
+    }
+
+    public String getLoginid() {
+        return loginid;
+    }
+
+    public void setLoginid(String loginid) {
+        this.loginid = loginid;
     }
 
 }
