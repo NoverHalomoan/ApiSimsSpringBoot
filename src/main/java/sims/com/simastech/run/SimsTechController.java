@@ -53,7 +53,7 @@ class SimsTechController {
     // proses registrasi
     @Tag(name = "Modul Membership")
     @PostMapping("/registration")
-    public @Schema(hidden = true) ResponseEntity<ApiResponse<Object>> CreateRegist(
+    public ResponseEntity<ApiResponse<Object>> CreateRegist(
             @RequestBody @Schema(hidden = true) Users users) {
         ApiResponse<Object> response = repositoryUser.CreateRegist(users);
         return ResponseEntity.status(HttpStatus.OK).body(response);

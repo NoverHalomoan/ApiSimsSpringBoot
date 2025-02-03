@@ -21,6 +21,9 @@ public class ImageUploading {
     @Column(columnDefinition = "BYTEA") // Untuk PostgreSQL
     private byte[] fileData;
 
+    public ImageUploading() {
+    }
+
     public String getId() {
         return id;
     }
