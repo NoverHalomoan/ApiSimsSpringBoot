@@ -15,7 +15,7 @@ services:
 app:
     image: SimsTech
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/simstech
+      SPRING_DATASOURCE_URL: postgresql://${PROD_DB_HOST}:${PROD_DB_PORT}/${PROD_DB_NAME}
     depends_on:
       - db
 
