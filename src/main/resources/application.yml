@@ -1,0 +1,18 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  info:
+    env:
+      enabled: true
+
+info:
+  application:
+    name: SimsTech
+    description: A blog with articles about The Spring Framework.
+    author: Nover
+    version: "@project.version@"
+spring:
+  profiles:
+    active: dev
