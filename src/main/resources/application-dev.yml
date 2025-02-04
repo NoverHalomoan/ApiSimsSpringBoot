@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/simstech
+    username: simstech
+    password: admin123
+    name: SimsTech
+
+sql:
+  init:
+    mode: always
