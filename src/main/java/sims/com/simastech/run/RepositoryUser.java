@@ -47,7 +47,7 @@ public class RepositoryUser {
 
     public Optional<Users> searchbyemail(String email) {
         Optional<Users> datacari = jdbcClient
-                .sql("SELECT id,first_name,last_name from users where email=:email")
+                .sql("SELECT id,first_name,last_name from public.users where email=:email")
                 .param("email", email).query(Users.class).optional();
         return datacari;
     }
@@ -127,7 +127,7 @@ public class RepositoryUser {
             return response;
         }
         var updated = jdbcClient
-                .sql("INSERT INTO users(saldo, email, first_name, id, last_name,password,profile_image)VALUES(?, ?, ?, ?, ?,?,?)")
+                .sql("INSERT INTO public.users(saldo, email, first_name, id, last_name,password,profile_image)VALUES(?, ?, ?, ?, ?,?,?)")
                 .params(List.of(0, users.getEmail(), users.getFirst_name().toString(),
                         GeneratedIdRegist(users.getFirst_name(), users.getLast_name()),
                         users.getLast_name().toString(), users.getPassword().toString(),
